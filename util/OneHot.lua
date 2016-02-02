@@ -7,7 +7,8 @@ function OneHot:__init(outputSize)
   -- We'll construct one-hot encodings by using the index method to
   -- reshuffle the rows of an identity matrix. To avoid recreating
   -- it every iteration we'll cache it.
-  self._eye = torch.eye(outputSize)
+  self._eye = torch.ByteTensor():eye(outputSize)
+  -- self._eye = torch.eye(outputSize)
 end
 
 function OneHot:updateOutput(input)
