@@ -168,7 +168,10 @@ end
 
 -- ship the model to the GPU if desired
 if opt.gpuid >= 0 and opt.opencl == 0 then
-    for k,v in pairs(protos) do v:cuda() end
+    for k,v in pairs(protos) do 
+      print(k,v)
+      v:cuda()
+    end
 end
 if opt.gpuid >= 0 and opt.opencl == 1 then
     for k,v in pairs(protos) do v:cl() end
